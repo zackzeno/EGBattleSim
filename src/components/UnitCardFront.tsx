@@ -46,7 +46,7 @@ export default function UnitCardFront({unit}: Props) {
             <div>
                 <div className="pl-1 text-2xs font-light text-slate-500 border-b border-slate-400">{unit.imageCredit}</div>
                 <div className="bg-white">
-                    <Image src={unit.image} alt="Card Photo" width={320} height={320} />
+                    <Image src={`/EGBattleSim${unit.image}`} alt="Card Photo" width={320} height={320} />
                 </div>
             </div>
         </div>
