@@ -9,7 +9,7 @@ export default function UnitCardFront({unit}: Props) {
 
     return (
         <div className="w-full h-full flex flex-col">
-            <div className="grow p-1 text-slate-800">
+            <div className="grow p-1">
                 <div className="flex justify-between text-base">
                     <div>
                         HP:{" "}
