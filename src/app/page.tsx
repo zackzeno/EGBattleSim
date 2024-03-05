@@ -13,7 +13,7 @@ export default function Home() {
           {
               ALL_UNITS.map((unit, i) => (
                   <div key={i} className="p-4">
-                      <UnitCard unit={unit} animated={false} />
+                      <UnitCard unit={unit} />
                   </div>
               ))
           }

@@ -6,8 +6,7 @@ import UnitCardBack from "@/components/UnitCardBack";
 
 
 interface Props {
-    unit: IUnitDetails;
-    animated?: boolean
+    unit: IUnitDetails
 }
 
 const colors = {
@@ -17,36 +16,24 @@ const colors = {
     red: 'bg-red-50'
 }
 
-export default function UnitCard({unit, animated}: Props) {
+export default function UnitCard({unit}: Props) {
 
     let [isFlipped, setFlipped] = useState(false);
 
-    let classes = `h-112 w-80 ${colors[unit.color]} rounded overflow-hidden outline outline-1 outline-slate-400 shadow-lg`;
+    let classes = `h-112 w-80 ${colors[unit.color]} text-slate-800 rounded overflow-hidden outline outline-1 outline-slate-400 shadow-lg`;
 
-    if(animated) {
-        return (
-            <div>
-                <ReactCardFlip isFlipped={isFlipped}>
-                    <div className={classes} onClick={() => setFlipped(true)}>
-                        <UnitCardFront unit={unit} />
-                    </div>
-
-                    <div className={classes} onClick={() => setFlipped(false)}>
-                        <UnitCardBack unit={unit} />
-                    </div>
-                </ReactCardFlip>
-            </div>
-        )
-    }
     return (
-        !isFlipped ?
-            <div className={classes} onClick={() => setFlipped(true)}>
-                <UnitCardFront unit={unit} />
-            </div> :
-            <div className={classes} onClick={() => setFlipped(false)}>
-                <UnitCardBack unit={unit} />
-            </div>
+        <div>
+            <ReactCardFlip isFlipped={isFlipped}>
+                <div className={classes} onClick={() => setFlipped(true)}>
+                    <UnitCardFront unit={unit} />
+                </div>
 
+                <div className={classes} onClick={() => setFlipped(false)}>
+                    <UnitCardBack unit={unit} />
+                </div>
+            </ReactCardFlip>
+        </div>
     )
 
 
