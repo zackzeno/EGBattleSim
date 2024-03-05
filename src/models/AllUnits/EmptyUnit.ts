@@ -9,6 +9,7 @@ export const UNIT_DETAILS: IUnitDetails = {
     baseHP: 0,
     attackDice: 0,
     attackBonus: 0,
+    color: 'white',
     image: '/card-images/',
     imageCredit: 'art generated with AI',
     specialAbilities: [],

@@ -1,5 +1,5 @@
 import Unit, {IUnitDetails} from "@/models/Unit";
-import Game, {Team} from "@/models/Game";
+import Game from "@/models/Game";
 
 const MOVE_DESCRIPTION_1 = `
 Gives +5 HP to teammates. Effect continues if Queb Stache dies.
