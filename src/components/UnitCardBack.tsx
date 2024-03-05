@@ -1,4 +1,5 @@
 import {IUnitDetails} from "@/models/Unit";
+import UnitCardHeader from "@/components/UnitCardHeader";
 
 interface Props {
     unit: IUnitDetails;
@@ -8,22 +9,7 @@ export default function UnitCardBack({unit}: Props) {
 
     return (
         <div className="w-full h-full flex flex-col p-1">
-            <div className="flex justify-between">
-                <div>
-                    HP:{" "}
-                    {
-                        unit.currentHP === unit.baseHP ?
-                            unit.baseHP :
-                            unit.currentHP > unit.baseHP ?
-                                <span className="text-green-600">{unit.currentHP}</span> :
-                                <span className="text-red-600">{unit.currentHP}</span>
-                    }
-                </div>
-                <div>Attack: d{unit.attackDice} {unit.attackBonus > 0 && `+ ${unit.attackBonus}`}</div>
-            </div>
-            <div className="text-2xl font-medium font-serif">
-                <div>{unit.name}</div>
-            </div>
+            <UnitCardHeader unit={unit} />
 
             <div className="flex flex-col mt-4">
                 {unit.specialAbilities.length ? (

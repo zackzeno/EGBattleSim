@@ -20,7 +20,7 @@ export default function UnitCard({unit}: Props) {
 
     let [isFlipped, setFlipped] = useState(false);
 
-    let classes = `h-112 w-80 ${colors[unit.color]} text-slate-800 rounded overflow-hidden outline outline-1 outline-slate-400 shadow-lg`;
+    let classes = `h-112 w-80 ${colors[unit.color]} text-black rounded overflow-hidden outline outline-1 outline-slate-400 shadow-lg`;
 
     return (
         <div>
