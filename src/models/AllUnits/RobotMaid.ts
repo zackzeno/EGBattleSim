@@ -29,7 +29,7 @@ export const UNIT_DETAILS: IUnitDetails = {
     attackBonus: 0,
     color: 'white',
     image: '/card-images/robotmaid.png',
-    imageCredit: 'Robot Maid art generated with AI',
+    imageCredit: 'art generated with AI',
     specialAbilities: [
         {
             id:'hidden_gun',

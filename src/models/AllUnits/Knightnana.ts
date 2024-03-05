@@ -6,6 +6,7 @@ Heavy hitters will not have the +2 added to their attacks on Nightnana.
 `.trim()
 
 const MOVE_DESCRIPTION_2 = `
+Can only be used as Knightnana
 Knightnana can choose any teammate to defend and prevent it form taking any damage for one round.
 `.trim()
 
@@ -29,7 +30,7 @@ export const UNIT_DETAILS: IUnitDetails = {
     specialMoves: [
         {
             id: 'protect_the_vulnerable',
-            name: 'Knightnana: Protect the Vulnerable',
+            name: 'Protect the Vulnerable',
             description: MOVE_DESCRIPTION_2
         }
     ]

@@ -2,7 +2,7 @@
 
 import {makeAllUnits} from "@/models/AllUnits";
 import UnitCard from "@/components/UnitCard";
-import {useMemo} from "react";
+import {useEffect, useMemo, useState} from "react";
 
 export default function Home() {
 
@@ -13,7 +13,7 @@ export default function Home() {
           {
               ALL_UNITS.map((unit, i) => (
                   <div key={i} className="p-4">
-                      <UnitCard unit={unit} />
+                      <UnitCard unit={unit} animated={false} />
                   </div>
               ))
           }

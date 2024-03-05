@@ -20,7 +20,7 @@ export const UNIT_DETAILS: IUnitDetails = {
     attackBonus: 0,
     color: 'blue',
     image: '/card-images/meteor.jpg',
-    imageCredit: 'Meteor art generated with AI',
+    imageCredit: 'art generated with AI',
     specialAbilities: [
         {
             id: 'meteor',

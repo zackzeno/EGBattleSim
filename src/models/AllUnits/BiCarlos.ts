@@ -14,7 +14,7 @@ export const UNIT_DETAILS: IUnitDetails = {
     attackBonus: 0,
     color: 'white',
     image: '/card-images/bicarlos.jpg',
-    imageCredit: 'Bi Carlos art generated with AI',
+    imageCredit: 'art generated with AI',
     specialAbilities: [],
     specialMoves: [
         {
