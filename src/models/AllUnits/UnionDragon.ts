@@ -17,7 +17,7 @@ export const UNIT_DETAILS: IUnitDetails = {
     attackDice: 6,
     attackBonus: 0,
     color: 'green',
-    image: '/card-images/uniondragon.png',
+    image: '/card-images/uniondragon.webp',
     imageCredit: 'art generated with AI',
     specialAbilities: [
         {

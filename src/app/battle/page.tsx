@@ -64,20 +64,20 @@ export default function Battle() {
         <div className="w-full h-[calc(100vh-64px)] flex items-stretch">
             <div className="w-2/5 bg-slate-200 flex">
                 <div className="w-1/2 flex flex-col justify-around items-center">
-                    <UnitCard unit={gameState.teams[0].units[0]} />
-                    <UnitCard unit={gameState.teams[0].units[2]} />
+                    <UnitCard unit={gameState.teams[0].units[0]} animated={false} />
+                    <UnitCard unit={gameState.teams[0].units[2]} animated={false} />
                 </div>
                 <div className="w-1/2 flex flex-col justify-around items-center">
-                    <UnitCard unit={gameState.teams[0].units[1]} />
+                    <UnitCard unit={gameState.teams[0].units[1]} animated={false} />
                 </div>
             </div>
             <div className="w-2/5 bg-slate-300 flex">
                 <div className="w-1/2 flex flex-col justify-around items-center">
-                    <UnitCard unit={gameState.teams[1].units[1]} />
+                    <UnitCard unit={gameState.teams[1].units[1]} animated={false} />
                 </div>
                 <div className="w-1/2 flex flex-col justify-around items-center">
-                    <UnitCard unit={gameState.teams[1].units[0]} />
-                    <UnitCard unit={gameState.teams[1].units[2]} />
+                    <UnitCard unit={gameState.teams[1].units[0]} animated={false} />
+                    <UnitCard unit={gameState.teams[1].units[2]} animated={false} />
                 </div>
             </div>
             <div className="w-1/5 pb-10 bg-slate-400 flex flex-col justify-end">

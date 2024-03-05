@@ -44,13 +44,13 @@ export default function HPEditor({game, onUpdate}: Props) {
 
     return (
         <div className="flex flex-col p-3">
-            <div className="flex">
-                <div className="flex flex-col">
+            <div className="flex justify-between">
+                <div className="flex flex-col basis-0">
                     <UnitHealth unit={game.teams[0].units[0]} onChange={health => setNewHealth(0, health)} />
                     <UnitHealth unit={game.teams[0].units[1]} onChange={health => setNewHealth(1, health)} />
                     <UnitHealth unit={game.teams[0].units[2]} onChange={health => setNewHealth(2, health)} />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col basis-0">
                     <UnitHealth unit={game.teams[1].units[0]} onChange={health => setNewHealth(3, health)} />
                     <UnitHealth unit={game.teams[1].units[1]} onChange={health => setNewHealth(4, health)} />
                     <UnitHealth unit={game.teams[1].units[2]} onChange={health => setNewHealth(5, health)} />

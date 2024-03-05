@@ -20,7 +20,7 @@ export const UNIT_DETAILS: IUnitDetails = {
     attackBonus: 0,
     color: 'green',
     image: '/card-images/quebstache.png',
-    imageCredit: 'Queb Stache art generated with AI',
+    imageCredit: 'art generated with AI',
     specialAbilities: [
         {
             id: 'inspirational_stache',

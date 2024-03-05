@@ -19,7 +19,7 @@ export const UNIT_DETAILS: IUnitDetails =  {
     attackBonus: 0,
     color: 'white',
     image: '/card-images/intern.jpg',
-    imageCredit: 'Intern art generated with AI',
+    imageCredit: 'art generated with AI',
     specialAbilities: [
         {
             id: 'chlamydia',

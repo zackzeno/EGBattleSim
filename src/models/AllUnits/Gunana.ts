@@ -13,7 +13,7 @@ export const UNIT_DETAILS: IUnitDetails = {
     attackBonus: 2,
     color: 'red',
     image: '/card-images/gunana.png',
-    imageCredit: 'Gunana art generated with AI',
+    imageCredit: 'art generated with AI',
     specialAbilities: [],
     specialMoves: [
         {
