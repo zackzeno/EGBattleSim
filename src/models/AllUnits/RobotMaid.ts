@@ -21,8 +21,10 @@ Can cure any player of chlamydia.
 
 
 export const UNIT_DETAILS: IUnitDetails = {
+    id: 'RobotMaid',
     name: 'Robot Maid',
     baseHP: 15,
+    currentHP: 15,
     attackDice: 8,
     attackBonus: 0,
     color: 'white',
@@ -55,7 +57,7 @@ export const UNIT_DETAILS: IUnitDetails = {
 }
 
 export default class RobotMaid extends Unit {
-
+    public static readonly id = UNIT_DETAILS.id;
 
     constructor() {
         super(UNIT_DETAILS);

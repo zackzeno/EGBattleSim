@@ -12,7 +12,7 @@ export default function UnitCardBack({unit}: Props) {
                 <div>
                     HP:{" "}
                     {
-                        unit.currentHP === undefined || unit.currentHP == unit.baseHP ?
+                        unit.currentHP === unit.baseHP ?
                             unit.baseHP :
                             unit.currentHP > unit.baseHP ?
                                 <span className="text-green-600">{unit.currentHP}</span> :
@@ -21,7 +21,7 @@ export default function UnitCardBack({unit}: Props) {
                 </div>
                 <div>Attack: d{unit.attackDice} {unit.attackBonus > 0 && `+ ${unit.attackBonus}`}</div>
             </div>
-            <div className="text-2xl font-medium">
+            <div className="text-2xl font-medium font-serif">
                 <div>{unit.name}</div>
             </div>
 

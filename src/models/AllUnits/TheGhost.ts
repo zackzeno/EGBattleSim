@@ -1,30 +1,31 @@
 import Unit, {IUnitDetails} from "@/models/Unit";
 
 const MOVE_DESCRIPTION = `
-Has a shotgun that it can use once per game. The shotgun does d6 damage to the targeted character and does half that much damage to any adjacent characters.
+1. Can hide any teammate from The Great Moth Detective for one turn.
+2. Can subtract 1 from any enemy’s special roll for one turn.
 `.trim()
 
 export const UNIT_DETAILS: IUnitDetails = {
-    id: 'Gunana',
-    name: 'Gunana',
+    id: 'TheGhost',
+    name: 'The Ghost',
     baseHP: 15,
     currentHP: 15,
     attackDice: 8,
     attackBonus: 2,
     color: 'red',
-    image: '/card-images/gunana.png',
-    imageCredit: 'Gunana art generated with AI',
+    image: '/card-images/theghost.jpg',
+    imageCredit: 'art generated with AI',
     specialAbilities: [],
     specialMoves: [
         {
-            id: 'shotgun',
-            name: 'Shotgun',
+            id: 'the_rules_are_rigged',
+            name: 'The Rules Are Rigged',
             description: MOVE_DESCRIPTION
         }
     ]
 }
 
-export default class Gunana extends Unit {
+export default class TheGhost extends Unit {
     public static readonly id = UNIT_DETAILS.id;
 
     constructor() {

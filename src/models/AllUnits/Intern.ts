@@ -11,8 +11,10 @@ Chlamydia can only be cured by Robot Maid.
 `.trim()
 
 export const UNIT_DETAILS: IUnitDetails =  {
+    id: 'Intern',
     name: 'Intern',
     baseHP: 10,
+    currentHP: 10,
     attackDice: 8,
     attackBonus: 0,
     color: 'white',
@@ -29,6 +31,7 @@ export const UNIT_DETAILS: IUnitDetails =  {
 }
 
 export default class Intern extends Unit {
+    public static readonly id = UNIT_DETAILS.id;
 
     constructor() {
         super(UNIT_DETAILS);

@@ -12,8 +12,10 @@ Kills negate all defense and protections except the Robot Maid.
 `.trim()
 
 export const UNIT_DETAILS: IUnitDetails = {
+    id: 'Meteor',
     name: 'Meteor',
     baseHP: 20,
+    currentHP: 20,
     attackDice: 0,
     attackBonus: 0,
     color: 'blue',
@@ -30,6 +32,7 @@ export const UNIT_DETAILS: IUnitDetails = {
 }
 
 export default class Meteor extends Unit {
+    public static readonly id = UNIT_DETAILS.id;
 
     constructor() {
         super(UNIT_DETAILS);

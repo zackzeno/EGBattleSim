@@ -1,18 +1,22 @@
 "use client"
 
-import ALL_UNITS from "@/models/AllUnits";
+import {makeAllUnits} from "@/models/AllUnits";
 import UnitCard from "@/components/UnitCard";
+import {useMemo} from "react";
 
 export default function Home() {
-  return (
-      <div className="container mx-auto w-full flex flex-wrap">
+
+    const ALL_UNITS = useMemo(makeAllUnits, [])
+
+    return (
+      <div className="container mx-auto w-full flex flex-wrap justify-around">
           {
               ALL_UNITS.map((unit, i) => (
-                  <div key={i} className="p-2">
+                  <div key={i} className="p-4">
                       <UnitCard unit={unit} />
                   </div>
               ))
           }
       </div>
-  );
+    );
 }

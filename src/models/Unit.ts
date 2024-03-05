@@ -5,8 +5,10 @@ import Team from "@/models/Team";
 
 export type UnitColor = 'white'|'blue'|'green'|'red';
 export interface IUnitDetails {
+    readonly id: string;
     readonly name: string
     readonly baseHP: number
+    readonly currentHP: number;
     readonly attackDice: number
     readonly attackBonus: number
     readonly color: UnitColor
@@ -14,8 +16,6 @@ export interface IUnitDetails {
     readonly imageCredit: string
     readonly specialMoves: readonly ISpecialMove[]
     readonly specialAbilities: readonly ISpecialAbility[]
-
-    readonly currentHP?: number;
 }
 
 interface Unit {
@@ -26,8 +26,8 @@ interface Unit {
 
     onEffect?(game: Game, effect: TurnEffect): Promise<TurnEffect>
 }
-abstract class Unit implements IUnitDetails {
-
+class Unit implements IUnitDetails {
+    readonly id: string;
     readonly name: string;
     readonly baseHP: number;
     readonly attackDice: number;
@@ -44,9 +44,42 @@ abstract class Unit implements IUnitDetails {
     protected _currentHP: number;
     public get currentHP() {return this._currentHP}
 
-    protected constructor(details: IUnitDetails) {
+    public get unitState(): IUnitDetails {
+
+        const {
+            id,
+            name,
+            baseHP,
+            currentHP,
+            attackDice,
+            attackBonus,
+            color,
+            image,
+            imageCredit,
+            specialMoves,
+            specialAbilities
+        } = this;
+
+        return {
+            id,
+            name,
+            baseHP,
+            currentHP,
+            attackDice,
+            attackBonus,
+            color,
+            image,
+            imageCredit,
+            specialMoves: specialMoves.map(move => ({...move})),
+            specialAbilities: specialAbilities.map(ability => ({...ability}))
+        }
+    }
+
+    public constructor(details: IUnitDetails) {
+        this.id = details.id;
         this.name = details.name;
         this.baseHP = details.baseHP;
+        this._currentHP = details.currentHP;
         this.attackDice = details.attackDice;
         this.attackBonus = details.attackBonus;
         this.color = details.color;
@@ -54,8 +87,6 @@ abstract class Unit implements IUnitDetails {
         this.imageCredit = details.imageCredit;
         this.specialMoves = details.specialMoves;
         this.specialAbilities = details.specialAbilities;
-
-        this._currentHP = this.baseHP;
     }
 
     public dealDamage(damage: number) {
@@ -70,6 +101,10 @@ abstract class Unit implements IUnitDetails {
         if(!allowAboveBase && this._currentHP > this.baseHP) {
             this._currentHP = this.baseHP;
         }
+    }
+
+    public setHealth(newHealth: number) {
+        this._currentHP = newHealth;
     }
 
     public async doNormalMove(game: Game, targetTeam: TeamID, targetSlot: SlotID): Promise<TurnEffect[]> {

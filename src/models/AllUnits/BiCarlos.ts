@@ -6,8 +6,10 @@ There is also a 50% chance that Bi Carlos traps that character in his webs and i
 `.trim()
 
 export const UNIT_DETAILS: IUnitDetails = {
+    id: 'BiCarlos',
     name: 'Bi Carlos',
     baseHP: 15,
+    currentHP: 15,
     attackDice: 8,
     attackBonus: 0,
     color: 'white',
@@ -24,6 +26,7 @@ export const UNIT_DETAILS: IUnitDetails = {
 }
 
 export default class BiCarlos extends Unit {
+    public static readonly id = UNIT_DETAILS.id;
 
     constructor() {
         super(UNIT_DETAILS);

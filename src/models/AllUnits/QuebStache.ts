@@ -12,8 +12,10 @@ const MOVE_DESCRIPTION_2 = `
 
 
 export const UNIT_DETAILS: IUnitDetails = {
+    id: 'QuebStache',
     name: 'Queb Stache',
     baseHP: 10,
+    currentHP: 10,
     attackDice: 4,
     attackBonus: 0,
     color: 'green',
@@ -35,6 +37,8 @@ export const UNIT_DETAILS: IUnitDetails = {
     ]
 }
 export default class QuebStache extends Unit {
+    public static readonly id = UNIT_DETAILS.id;
+
     constructor() {
         super(UNIT_DETAILS);
     }
