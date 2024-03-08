@@ -1,4 +1,4 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit";
 
 const MOVE_DESCRIPTION = `
 Spreads chlamydia to other players. 

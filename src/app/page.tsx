@@ -1,12 +1,14 @@
 "use client"
 
-import {makeAllUnits} from "@/models/AllUnits";
+import '@/models/Unit/registerUnits';
+
 import UnitCard from "@/components/UnitCard";
-import {useEffect, useMemo, useState} from "react";
+import {useMemo} from "react";
+import Unit from "@/models/Unit/Unit";
 
 export default function Home() {
 
-    const ALL_UNITS = useMemo(makeAllUnits, [])
+    const ALL_UNITS = useMemo(() => Unit.getAllUnitIds().map(id => Unit.makeUnitInstance(id)), [])
 
     return (
       <div className="container mx-auto w-full flex flex-wrap justify-around">

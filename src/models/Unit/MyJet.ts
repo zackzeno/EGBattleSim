@@ -1,4 +1,4 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit";
 
 const MOVE_DESCRIPTION = `
 Can become an avatar for any character that is not chosen for the game and get that character's special moves and abilities. 

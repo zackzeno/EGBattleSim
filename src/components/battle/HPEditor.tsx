@@ -1,5 +1,5 @@
-import Game from "@/models/Game";
-import Unit from "@/models/Unit";
+import Game from "@/models/Game/Game";
+import Unit from "@/models/Unit/Unit";
 import {useState} from "react";
 
 

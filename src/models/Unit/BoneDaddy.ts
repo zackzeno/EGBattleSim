@@ -1,4 +1,4 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit"
 
 const MOVE_DESCRIPTION = `
 Puppeteers any enemy directly killed by Bone Daddy for one turn. 

@@ -1,4 +1,4 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit";
 
 const MOVE_DESCRIPTION = `
 Can choose a teammate to protect for one round. 
@@ -21,7 +21,8 @@ export const UNIT_DETAILS: IUnitDetails = {
         {
             id: 'laser_eyes',
             name: 'Laser Eyes',
-            description: MOVE_DESCRIPTION
+            description: MOVE_DESCRIPTION,
+            targetType: 'ally'
         }
     ]
 }

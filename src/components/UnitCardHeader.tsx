@@ -1,4 +1,4 @@
-import {IUnitDetails} from "@/models/Unit";
+import {IUnitDetails} from "@/models/Unit/Unit";
 
 
 interface Props {

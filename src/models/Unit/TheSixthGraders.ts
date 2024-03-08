@@ -1,4 +1,4 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit";
 
 const MOVE_DESCRIPTION = `
 Can choose to attack 1, 2 or 3 enemies each round. 

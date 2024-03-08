@@ -1,4 +1,4 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit";
 
 const MOVE_DESCRIPTION = `
 
@@ -19,7 +19,8 @@ export const UNIT_DETAILS: IUnitDetails = {
         {
             id: '',
             name: '',
-            description: MOVE_DESCRIPTION
+            description: MOVE_DESCRIPTION,
+            targetType: 'none'
         }
     ]
 }

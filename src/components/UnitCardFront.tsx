@@ -1,5 +1,5 @@
 import Image from "next/image";
-import {IUnitDetails} from "@/models/Unit";
+import {IUnitDetails} from "@/models/Unit/Unit";
 import UnitCardHeader from "@/components/UnitCardHeader";
 
 interface Props {

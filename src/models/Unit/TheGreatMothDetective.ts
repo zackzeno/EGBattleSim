@@ -1,4 +1,4 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit";
 
 const MOVE_DESCRIPTION = `
 The first enemy that kills The Great Moth Detective’s teammate will be caught and locked up for 2 turns, unable to perform any actions.
@@ -29,7 +29,8 @@ export const UNIT_DETAILS: IUnitDetails = {
         {
             id: 'private_investigation',
             name: 'Private Investigation',
-            description: MOVE_DESCRIPTION_2
+            description: MOVE_DESCRIPTION_2,
+            targetType: 'any'
         }
     ]
 }
