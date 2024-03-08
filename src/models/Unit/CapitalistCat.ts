@@ -1,4 +1,4 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit";
 
 const MOVE_DESCRIPTION = `
 All damage to Capitalist Cat from enemy attacks is subtracted by 4 minus the number of players alive on Capitalist Cat's team. 
@@ -31,7 +31,8 @@ export const UNIT_DETAILS: IUnitDetails = {
         {
             id: 'predatory_pricing',
             name: 'Predatory Pricing',
-            description: MOVE_DESCRIPTION_2
+            description: MOVE_DESCRIPTION_2,
+            targetType: 'enemy'
         }
     ]
 }

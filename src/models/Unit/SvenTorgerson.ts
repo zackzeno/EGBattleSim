@@ -1,4 +1,4 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit";
 
 const MOVE_DESCRIPTION = `
 Once per game, can permanently swap all special moves and abilities between any two players, not including himself. 
@@ -21,7 +21,8 @@ export const UNIT_DETAILS: IUnitDetails = {
         {
             id: 'ivao_fsc_cheater',
             name: 'IVAO FSC Cheater',
-            description: MOVE_DESCRIPTION
+            description: MOVE_DESCRIPTION,
+            targetType: 'any'
         }
     ]
 }

@@ -1,4 +1,4 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit";
 
 const MOVE_DESCRIPTION = `
 Adds 1 to all damage done by teammates for each teammate that is still alive. 
@@ -30,7 +30,8 @@ export const UNIT_DETAILS: IUnitDetails = {
         {
             id: 'employee_rights',
             name: 'Employee Rights',
-            description: MOVE_DESCRIPTION_2
+            description: MOVE_DESCRIPTION_2,
+            targetType: 'ally'
         }
     ]
 }

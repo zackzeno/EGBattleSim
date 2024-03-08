@@ -1,9 +1,21 @@
-import ISpecialMove from "@/models/SpecialMove";
-import ISpecialAbility from "@/models/SpecialAbility";
-import Game, {SlotID, TeamID, TurnEffect} from "@/models/Game";
-import Team from "@/models/Team";
+
+import Game, {Action, SlotID, TeamID} from "@/models/Game/Game";
+import Team from "@/models/Game/Team";
+import Passive from "@/models/Game/Passive";
+import {AnyEffect} from "@/models/Game/Effect";
 
 export type UnitColor = 'white'|'blue'|'green'|'red';
+
+export interface ISpecialAbility {
+    readonly id: string
+    readonly name: string
+    readonly description: string
+}
+
+export interface ISpecialMove extends ISpecialAbility {
+    readonly targetType: 'enemy'|'ally'|'any'|'none'
+}
+
 export interface IUnitDetails {
     readonly id: string;
     readonly name: string
@@ -19,12 +31,11 @@ export interface IUnitDetails {
 }
 
 interface Unit {
-    onStartGame?(game: Game, myTeam: 0|1): Promise<void>
-    onStartRound?(game: Game, myTeam: 0|1): Promise<void>
+    onStartGame?(game: Game): Promise<AnyEffect[]>
+    onStartRound?(game: Game): Promise<AnyEffect[]>
+    onStartTurn?(game: Game): Promise<AnyEffect[]>
 
-    doSpecialMove?(game: Game, index: number, targetTeam: TeamID, targetSlot: SlotID): Promise<TurnEffect[]>
-
-    onEffect?(game: Game, effect: TurnEffect): Promise<TurnEffect>
+    doSpecialMove?(game: Game, index: number, targetUnit: Unit): Promise<AnyEffect[]>
 }
 class Unit implements IUnitDetails {
     readonly id: string;
@@ -38,11 +49,24 @@ class Unit implements IUnitDetails {
     readonly specialMoves: readonly ISpecialMove[];
     readonly specialAbilities: readonly ISpecialAbility[];
 
-    public team?: Team;
-    public slotID?: SlotID;
+    private _teamInfo?: {
+        team: Team,
+        slotID: SlotID
+    };
+    private get teamInfo() {
+        if(!this._teamInfo) {
+            throw new Error('Unit not assigned to game');
+        }
+        return this._teamInfo;
+    }
+    public get team(): Team { return this.teamInfo.team }
+    public get slotID(): SlotID { return this.teamInfo.slotID }
 
     protected _currentHP: number;
     public get currentHP() {return this._currentHP}
+
+    protected _passives: Passive[];
+    public get passives() { return this._passives }
 
     public get unitState(): IUnitDetails {
 
@@ -87,9 +111,19 @@ class Unit implements IUnitDetails {
         this.imageCredit = details.imageCredit;
         this.specialMoves = details.specialMoves;
         this.specialAbilities = details.specialAbilities;
+
+        this._passives = [];
+    }
+
+    public assignToTeam(team: Team, slot: SlotID) {
+        this._teamInfo = {
+            team,
+            slotID: slot
+        }
     }
 
     public dealDamage(damage: number) {
+        console.log('Damaging', this, 'by', damage)
         this._currentHP -= damage;
         if(this._currentHP < 0) {
             this._currentHP = 0;
@@ -97,6 +131,7 @@ class Unit implements IUnitDetails {
     }
 
     public healDamage(damage: number, allowAboveBase: boolean) {
+        console.log('Healing', this, 'by', damage, allowAboveBase)
         this._currentHP += damage;
         if(!allowAboveBase && this._currentHP > this.baseHP) {
             this._currentHP = this.baseHP;
@@ -104,35 +139,50 @@ class Unit implements IUnitDetails {
     }
 
     public setHealth(newHealth: number) {
+        console.log('Setting', this, 'health to', newHealth)
         this._currentHP = newHealth;
     }
 
-    public async doNormalMove(game: Game, targetTeam: TeamID, targetSlot: SlotID): Promise<TurnEffect[]> {
-        let roll = await game.rollDice(this.attackDice, this.attackBonus);
+    addPassive(passive: Passive) {
+        console.log('Adding', passive, 'to', this)
+        this._passives = [
+            ...this._passives,
+            passive
+        ];
+    }
+    removePassive(passive: Passive) {
+        console.log('Removing', passive, 'from', this)
+        this._passives = this._passives.filter(p => p === passive);
+    }
+
+    public async doNormalMove(game: Game, target: Unit): Promise<AnyEffect[]> {
+        let roll = await game.rollDice({
+            initiator: this,
+            target,
+            type: 'normal',
+            dice: this.attackDice,
+            bonus: this.attackBonus,
+            reason: 'Normal Move'
+        });
+
+        console.log('Doing normal roll', this, target, roll);
 
         return [
             {
                 type: 'damage',
-                amount: roll,
-                targetTeam,
-                targetSlot
+                initiator: this,
+                target,
+                amount: roll.result
             }
         ]
     }
 
-    public async doTurn(game: Game, myTeam: TeamID, mySlot: SlotID): Promise<TurnEffect[]> {
-
-        let action = await game.getAction({
-            currentTeam: game.teams[myTeam],
-            currentUnit: game.teams[myTeam].units[mySlot],
-            otherTeam: game.teams[myTeam + 1 % 2]
-        });
+    public async doTurn(game: Game, action: Action): Promise<AnyEffect[]> {
 
         switch (action.type) {
         case 'normal':
             return this.doNormalMove(
                 game,
-                myTeam + 1 % 2 as TeamID,
                 action.target
             )
         case 'special':
@@ -143,10 +193,27 @@ class Unit implements IUnitDetails {
             return this.doSpecialMove(
                 game,
                 action.index,
-                myTeam + 1 % 2 as TeamID,
                 action.target
             )
         }
+    }
+}
+
+namespace Unit {
+    const ALL_UNITS_MAP: Map<string, {new(): Unit}> = new Map();
+
+    export function registerUnit(NewUnit: {id: string, new(): Unit}) {
+        ALL_UNITS_MAP.set(NewUnit.id, NewUnit);
+    }
+
+    export function makeUnitInstance(unitId: string) {
+        const NewUnit = ALL_UNITS_MAP.get(unitId)!
+
+        return new NewUnit();
+    }
+
+    export function getAllUnitIds(): string[] {
+        return [...ALL_UNITS_MAP.keys()]
     }
 }
 

@@ -1,4 +1,6 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit";
+import Game from "@/models/Game/Game";
+import {AnyEffect} from "@/models/Game/Effect";
 
 const MOVE_DESCRIPTION = `
 SPEED always goes into the 3rd spot on a team but always has the first action each round.
@@ -29,5 +31,15 @@ export default class Speed extends Unit {
 
     constructor() {
         super(UNIT_DETAILS);
+    }
+
+    async onStartGame(game: Game): Promise<AnyEffect[]> {
+        return [
+            {
+                type: 'special',
+                code: 'move_to_front',
+                initiator: this
+            }
+        ]
     }
 }

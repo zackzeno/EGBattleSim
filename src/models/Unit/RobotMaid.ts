@@ -1,4 +1,4 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit";
 
 const MOVE_DESCRIPTION_1 = `
 Can get a gun and become a heavy hitter if it does not use a special ability for two moves. 
@@ -46,12 +46,14 @@ export const UNIT_DETAILS: IUnitDetails = {
         {
             id: 'declutter',
             name: 'Declutter',
-            description: MOVE_DESCRIPTION_3
+            description: MOVE_DESCRIPTION_3,
+            targetType: 'ally'
         },
         {
             id: 'shes_a_nurse_too_uwu',
             name: 'She\'s a Nurse Too UwU',
-            description: MOVE_DESCRIPTION_4
+            description: MOVE_DESCRIPTION_4,
+            targetType: 'ally'
         },
     ]
 }

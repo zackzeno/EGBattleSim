@@ -1,4 +1,4 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit";
 
 const MOVE_DESCRIPTION = `
 The player who selects Goodapple/Tomontos chooses which character to play. This choice is not revealed to the other team unless they use an ability to uncover the secret.
@@ -34,12 +34,14 @@ export const UNIT_DETAILS: IUnitDetails = {
         {
             id: 'slow_healing',
             name: 'Slow Healing',
-            description: MOVE_DESCRIPTION_2
+            description: MOVE_DESCRIPTION_2,
+            targetType: 'ally'
         },
         {
             id: 'slow_poison',
             name: 'Slow Poison',
-            description: MOVE_DESCRIPTION_3
+            description: MOVE_DESCRIPTION_3,
+            targetType: 'enemy'
         }
     ]
 }

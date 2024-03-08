@@ -1,4 +1,4 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit";
 
 const MOVE_DESCRIPTION = `
 Spends odd-numbered rounds as Knightnana, who gets +2 attack, and spends even-numbered rounds as Nightnana, which cannot attack, but can only be damaged by heavy hitters. 
@@ -31,7 +31,8 @@ export const UNIT_DETAILS: IUnitDetails = {
         {
             id: 'protect_the_vulnerable',
             name: 'Protect the Vulnerable',
-            description: MOVE_DESCRIPTION_2
+            description: MOVE_DESCRIPTION_2,
+            targetType: 'ally'
         }
     ]
 }

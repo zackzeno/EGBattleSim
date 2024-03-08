@@ -1,4 +1,4 @@
-import Unit, {IUnitDetails} from "@/models/Unit";
+import Unit, {IUnitDetails} from "@/models/Unit/Unit";
 
 const MOVE_DESCRIPTION = `
 1. Can hide any teammate from The Great Moth Detective for one turn.
@@ -20,7 +20,8 @@ export const UNIT_DETAILS: IUnitDetails = {
         {
             id: 'the_rules_are_rigged',
             name: 'The Rules Are Rigged',
-            description: MOVE_DESCRIPTION
+            description: MOVE_DESCRIPTION,
+            targetType: 'ally'
         }
     ]
 }
